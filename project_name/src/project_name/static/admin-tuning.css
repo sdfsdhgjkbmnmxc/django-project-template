@@ -1,0 +1,4 @@
+.inline-group .vLargeTextField,
+.inline-group .vTextField {
+    width:auto !important;
+}

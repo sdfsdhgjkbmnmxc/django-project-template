@@ -1,0 +1,10 @@
+[pep8]
+# E501 line too long
+# E124 closing bracket does not match visual indentation
+# E128 continuation line under-indented for visual indent
+# E261 at least two spaces before inline comment
+# E262 inline comment should start with '# '
+# E302 expected 2 blank lines, found 1
+# E202 whitespace before
+ignore=E261,E262
+max-line-length=79

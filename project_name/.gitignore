@@ -1,0 +1,8 @@
+*~
+*#
+*.pyc
+.settings
+*project
+*.sqlite
+.idea
+system/venv

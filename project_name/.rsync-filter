@@ -1,0 +1,14 @@
+- .hg
+- .hgignore
+- .git
+- .gitignore
+- .project
+- .pydevproject
+- .settings
+- *.pyc
+- *.orig
+- *-dev*
+- dev
+- .sqlite
+- .idea
+- .venv/*
