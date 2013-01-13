@@ -1,0 +1,30 @@
+{% csrf_token %}
+
+{% if form.non_field_errors %}
+    <div class="non_field_errors">
+        {{ form.non_field_errors }}
+    </div>
+{% endif %}
+
+{% for field in form %}
+    {% if field.is_hidden %}
+        {{ field }}
+        {% if field.errors %}<span class="error">{{ field.label_tag }}: {{ field.errors }}</span>{% endif %}
+    {% else %}
+        <tr valign="top">
+            <th>
+                {{ field.label_tag }}:{% if field.field.required %}<sup class="required">*</sup>{% endif %}
+            </th>
+            <td class="{% if field.errors %}error{% endif %}">
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error_mess">{{ field.errors }}</div>
+                {% endif %}
+                {% if field.help_text %}
+                    <br/>
+                    <small>{{ field.help_text }}</small>
+                {% endif %}
+            </td>
+        </tr>
+    {% endif %}
+{% endfor %}

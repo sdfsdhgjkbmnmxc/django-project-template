@@ -1,0 +1,9 @@
+\.git
+\.idea
+\.DS_Store
+\.pyc$
+\.settings$
+\..*project$
+\.sqlite$
+venv
+README.md

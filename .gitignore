@@ -1,5 +1,9 @@
+*~
+*#
 *.pyc
-.project
-.pydevproject
 .settings
-project_name/system/venv
+*project
+*.sqlite
+.idea
+system/venv
+README.md
