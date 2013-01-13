@@ -1,7 +1,6 @@
 #!/bin/sh
 set -e
 ROOT=`dirname "${BASH_SOURCE[0]}"`
-$ROOT/system/venv.sh
 
 # example: HOST=myserver.com
 HOST=
