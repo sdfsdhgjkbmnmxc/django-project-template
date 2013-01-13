@@ -18,7 +18,9 @@ Usage:
     django-admin.py startproject --template=http://goo.gl/r6sAa -e sh,conf,sql -n base.html <MYAPPNAME>
     find . -name \*.sh -type f -exec chmod +x {} \;
 
-Next go to <MYAPPNAME> folder and run ./runserver-dev.sh
+Next go to <MYAPPNAME> folder and run your project:
+
+    ./runserver-dev.sh
 
 Conventions:
  * suffix "-dev" = "for development only"
