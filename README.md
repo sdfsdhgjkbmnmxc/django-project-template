@@ -16,10 +16,9 @@ Features:
 Usage:
 
     django-admin.py startproject --template=http://goo.gl/r6sAa -e sh,conf,sql -n base.html <MYAPPNAME>
-    find . -name \*.sh -type f -exec chmod +x {} \;
-
-Next go to <MYAPPNAME> folder and run your project:
-
+    cd <MYAPPNAME>
+    find . -name \*.sh -type f -exec chmod +x {} \; && chmod +x src/manage.py && rm README.md
+    # and now run your project:
     ./runserver-dev.sh
 
 Conventions:

@@ -24,10 +24,11 @@ sed -i 's/YOUR.DOMAIN/${HOST}/g' $ROOT/system/*
 ssh $HOST "\
     sudo apt-get install -y $DEB &&\
     sudo mkdir -p $PROJECT_ROOT $VENV &&\
-    sudo chown -R \`whoami\` $PROJECT_ROOT &&\
+    sudo chown -R \`whoami\`:$GROUP $PROJECT_ROOT &&\
     sudo chmod u+w $PROJECT_ROOT &&\
     sudo find $PROJECT_ROOT -name \*.sh -type f -exec chmod +x {} \; &&\
-    bin/bash $PROJECT_ROOT/system/env.sh &&\
+    sudo chmod +x $PROJECT_ROOT/src/manage.py &&\
+    $PROJECT_ROOT/system/env.sh &&\
     true"
 
 echo "[`date +%H:%M:%S`] copy files"
@@ -36,7 +37,7 @@ rsync $ROOT --recursive -F $HOST:$PROJECT_ROOT
 echo "[`date +%H:%M:%S`] run postinstall"
 ssh $HOST "\
     sudo chown -R $USER:$GROUP $PROJECT_ROOT &&\
-    sudo /bin/bash $PROJECT_ROOT/system/postinstall.sh &&\
+    sudo $PROJECT_ROOT/system/postinstall.sh &&\
     true"
 
 echo "[`date +%H:%M:%S`] done"

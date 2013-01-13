@@ -2,8 +2,16 @@
 import os
 
 
+PROJ_NAME = '{{ project_name }}'
+
 root = os.path.realpath(os.path.dirname(__file__))
-VAR_DIR = os.path.realpath(os.path.join(root, '../../var'))
+VAR_DIR = os.path.join(root, '..', '..', 'var')
+
+if os.access('/var/log/%s' % PROJ_NAME, os.W_OK):
+    LOG_DIR = '/var/log/%s' % PROJ_NAME
+else:
+    import tempfile
+    LOG_DIR = tempfile.gettempdir()
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -18,9 +26,9 @@ MANAGERS = ADMINS
 #    'default': {
 #        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
 #        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': '{{ project_name }}',
-#        'USER': '{{ project_name }}',
-#        'PASSWORD': '{{ project_name }}',
+#        'NAME': PROJ_NAME,
+#        'USER': PROJ_NAME,
+#        'PASSWORD': PROJ_NAME,
 #        'HOST': 'localhost',
 #        'PORT': '',
 #    }
@@ -29,7 +37,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(VAR_DIR, '{{ project_name }}.sqlite'),
+        'NAME': os.path.join(VAR_DIR, PROJ_NAME + '.sqlite'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -78,9 +86,9 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = '{{ project_name }}.urls'
+ROOT_URLCONF = PROJ_NAME + '.urls'
 
-WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
+WSGI_APPLICATION = PROJ_NAME + '.wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(root, 'templates'),
@@ -105,7 +113,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    '{{ project_name }}',
+    PROJ_NAME,
 )
 
 INTERNAL_IPS = (
@@ -118,22 +126,25 @@ LOGGING = {
     'disable_existing_loggers': False,
     'filters': {
         'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
+            '()': 'django.utils.log.RequireDebugFalse',
         },
     },
     'handlers': {
         'stderr': {
+            'class': 'logging.StreamHandler',
             'level': 'DEBUG' if DEBUG else 'NOTSET',
+        },
+        'logfile': {
+            'level': 'INFO',
+            'path': LOG_DIR,
+            'root_name': PROJ_NAME,
+            'filters': ['require_debug_false'],
+            'class': PROJ_NAME + '.utils.log.MultiFileHandler',
         },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
-        'logfile': {
-            'level': 'INFO',
-            'filters': ['require_debug_false'],
-            'class': '{{ project_name }}.utils.log.FileHandler'
+            'class': 'django.utils.log.AdminEmailHandler',
         },
     },
     'loggers': {

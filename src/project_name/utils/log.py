@@ -4,22 +4,46 @@ import logging
 from stat import ST_DEV, ST_INO
 
 
-class FileHandler(logging.FileHandler):
-    def _open(self):
-        stream = super(FileHandler, self)._open()
-        stat = os.stat(self.baseFilename)
-        self._dev, self._ino = stat[ST_DEV], stat[ST_INO]
-        return stream
+class MultiFileHandler(logging.StreamHandler):
+    def __init__(self, path, root_name=None):
+        self.path = path
+        logging.Handler.__init__(self)
+        self.stream = None
+        self.root_name = root_name
+        self.loggers = {}
 
     def emit(self, record):
-        if self.stream is not None:
-            if not os.path.exists(self.baseFilename):
-                stat = None
-                changed = True
-            else:
-                stat = os.stat(self.baseFilename)
-                changed = (stat[ST_DEV] != self._dev or
-                           stat[ST_INO] != self._ino)
-            if changed:
-                self.close()
-        super(FileHandler, self).emit(record)
+        if record.name == 'root' and self.root_name:
+            name = self.root_name
+        else:
+            name = record.name
+
+        if name in self.loggers:
+            logger = self.loggers[name]
+        else:
+            logger = {
+                'filename': os.path.join(self.path, '%s.log' % name),
+                'dev': (-1),
+                'ino': (-1),
+                'stream': None
+            }
+            self.loggers[name] = logger
+
+        if not os.path.exists(logger['filename']):
+            stat = None
+            changed = 1
+        else:
+            stat = os.stat(logger['filename'])
+            changed = (stat[ST_DEV] != logger['dev'] or
+                       stat[ST_INO] != logger['ino'])
+
+        if changed or logger['stream'] is None:
+            if logger['stream'] is not None:
+                logger['stream'].flush()
+                logger['stream'].close()
+            logger['stream'] = open(logger['filename'], 'a')
+            if stat is None:
+                stat = os.stat(logger['filename'])
+            logger['dev'], logger['ino'] = stat[ST_DEV], stat[ST_INO]
+        self.stream = logger['stream']
+        logging.StreamHandler.emit(self, record)
