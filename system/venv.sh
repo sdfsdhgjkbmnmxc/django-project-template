@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 ROOT=`dirname "${BASH_SOURCE[0]}"`
 
@@ -14,7 +14,8 @@ source $ROOT/venv/bin/activate
 # TODO: optimize
 pip install -r $ROOT/requirements.txt
 
-if [ ! -z "$@"]; then
+ARGS="$@"
+if [ -n "$ARGS" ]; then
     cd $ROOT/..
     $@
 fi
