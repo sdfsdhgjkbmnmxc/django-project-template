@@ -1,7 +1,0 @@
-#-e git+git://github.com/sdfsdhgjkbmnmxc/django-googleauth.git#egg=googleauth
-#-e git+git://github.com/sdfsdhgjkbmnmxc/django-bootstrap.git#egg=djbootstrap
-django
-flup
-pep8
-pil
-
