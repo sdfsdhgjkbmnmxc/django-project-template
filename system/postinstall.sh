@@ -7,8 +7,6 @@ USER=www-data
 GROUP=www-data
 HOST=$1
 
-bin/bash $PROJECT_ROOT/system/venv.sh
-
 echo "Logs..."
 mkdir -p /var/log/$NAME
 chown -R $USER:$GROUP /var/log/$NAME
@@ -25,7 +23,7 @@ ln -sf $PROJECT_ROOT/system/nginx.conf /etc/nginx/sites-enabled/$NAME
 /etc/init.d/nginx reload
 
 echo "Static files..."
-$PROJECT_ROOT/src/manage.py collectstatic --link --noinput
+$PROJECT_ROOT/venv.sh src/manage.py collectstatic --link --noinput
 chgrp -R www-data $PROJECT_ROOT/web/
 chmod -R 0775 $PROJECT_ROOT/web/
 
@@ -34,4 +32,4 @@ ln -sf $PROJECT_ROOT/system/cron.conf /etc/cron.d/$NAME
 chown root:root $PROJECT_ROOT/system/cron.conf
 
 echo "Create database"
-$PROJECT_ROOT/src/manage.py syncdb --noinput
+$PROJECT_ROOT/venv.sh src/manage.py syncdb --noinput

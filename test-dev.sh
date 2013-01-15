@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 ROOT=`dirname "${BASH_SOURCE[0]}"`
-$ROOT/system/venv.sh pep8 $ROOT/src --show-source
+$ROOT/venv.sh pep8 $ROOT/src --show-source
 export DJANGO_SETTINGS_MODULE={{ project_name }}.testsettings
-$ROOT/system/venv.sh src/manage.py test $@
+$ROOT/venv.sh src/manage.py test $@

@@ -27,7 +27,8 @@ ssh $HOST "\
     sudo chmod u+w $PROJECT_ROOT &&\
     sudo find $PROJECT_ROOT -name \*.sh -type f -exec chmod +x {} \; &&\
     sudo chmod +x $PROJECT_ROOT/src/manage.py &&\
-    $PROJECT_ROOT/system/env.sh &&\
+    $PROJECT_ROOT/env.sh &&\
+    $PROJECT_ROOT/upgrade-requirements.sh &&\
     true"
 
 echo "[`date +%H:%M:%S`] copy files"
