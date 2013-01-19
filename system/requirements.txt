@@ -3,5 +3,5 @@
 django
 flup
 pep8
+flake8
 pil
-
