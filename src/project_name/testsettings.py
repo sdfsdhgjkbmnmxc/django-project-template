@@ -1,4 +1,4 @@
-from localsettings import *  # @UnusedWildImport
+from localsettings import *  # @UnusedWildImport  # NOQA
 
 
 DATABASES = {

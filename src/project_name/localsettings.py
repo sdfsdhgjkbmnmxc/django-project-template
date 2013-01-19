@@ -1,4 +1,4 @@
-from settings import *  # @UnusedWildImport
+from settings import *  # @UnusedWildImport  # NOQA
 
 
 ADMINS = ()

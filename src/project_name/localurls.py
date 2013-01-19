@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from {{ project_name }}.urls import *  # @UnusedWildImport
+from {{ project_name }}.urls import *  # @UnusedWildImport  # NOQA
 import os
 
 
