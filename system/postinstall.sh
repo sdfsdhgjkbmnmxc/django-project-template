@@ -11,12 +11,12 @@ echo "Logs..."
 mkdir -p /var/log/$NAME
 chown -R $USER:$GROUP /var/log/$NAME
 ln -sf $PROJECT_ROOT/system/logrotate.conf /etc/logrotate.d/$NAME
-chown root:root $PROJECT_ROOT/system/logrotate
+chown root:root $PROJECT_ROOT/system/logrotate.conf
 
 echo "Supervisor..."
 ln -sf $PROJECT_ROOT/system/supervisor.conf /etc/supervisor/conf.d/$NAME.conf
-supervisorctl reload && sleep 2
-supervisorctl restart ${NAME}_fcgi && sleep 2
+supervisorctl update
+supervisorctl restart ${NAME}_fcgi
 
 echo "Nginx..."
 ln -sf $PROJECT_ROOT/system/nginx.conf /etc/nginx/sites-enabled/$NAME

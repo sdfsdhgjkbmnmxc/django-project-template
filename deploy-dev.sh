@@ -19,16 +19,12 @@ GROUP=www-data
 DEB=`tr '\n' ' ' < $ROOT/system/debian.txt`
 
 echo "[`date +%H:%M:%S`] prepare"
-sed -i 's/YOUR.DOMAIN/${HOST}/g' $ROOT/system/*
+sed -i 's/YOUR\.DOMAIN/${HOST}/g' $ROOT/system/*
 ssh $HOST "\
     sudo apt-get install -y $DEB &&\
     sudo mkdir -p $PROJECT_ROOT $VENV &&\
     sudo chown -R \`whoami\`:$GROUP $PROJECT_ROOT &&\
     sudo chmod u+w $PROJECT_ROOT &&\
-    sudo find $PROJECT_ROOT -name \*.sh -type f -exec chmod +x {} \; &&\
-    sudo chmod +x $PROJECT_ROOT/src/manage.py &&\
-    $PROJECT_ROOT/env.sh &&\
-    $PROJECT_ROOT/upgrade-requirements.sh &&\
     true"
 
 echo "[`date +%H:%M:%S`] copy files"
@@ -36,6 +32,10 @@ rsync $ROOT --recursive -F $HOST:$PROJECT_ROOT
 
 echo "[`date +%H:%M:%S`] run postinstall"
 ssh $HOST "\
+    sudo find $PROJECT_ROOT -name \*.sh -type f -exec chmod +x {} \; &&\
+    sudo chmod +x $PROJECT_ROOT/src/manage.py &&\
+    sudo $PROJECT_ROOT/venv.sh &&\
+    sudo $PROJECT_ROOT/upgrade-requirements.sh &&\
     sudo chown -R $USER:$GROUP $PROJECT_ROOT &&\
     sudo $PROJECT_ROOT/system/postinstall.sh &&\
     true"
