@@ -1,11 +1,17 @@
 #!/bin/bash
 set -e
+ROOT=`dirname "${BASH_SOURCE[0]}"`
 
-NAME={{ project_name }}
+NAME=`cat $ROOT/name.conf`
+
 PROJECT_ROOT=/var/www/$NAME
 USER=www-data
 GROUP=www-data
 HOST=$1
+
+echo "Virtualenv..."
+$ROOT/venv.sh
+$ROOT/upgrade-requirements.sh
 
 echo "Logs..."
 mkdir -p /var/log/$NAME
