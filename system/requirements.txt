@@ -2,6 +2,5 @@
 #-e git+git://github.com/sdfsdhgjkbmnmxc/django-bootstrap.git#egg=djbootstrap
 django
 flup
-pep8
 flake8
 pil
