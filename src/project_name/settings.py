@@ -114,6 +114,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     PROJ_NAME,
+    'south',
 )
 
 INTERNAL_IPS = (
