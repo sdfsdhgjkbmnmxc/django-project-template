@@ -9,6 +9,6 @@
 - *.orig
 - *-dev*
 - dev
-- .sqlite
+- *.sqlite
 - .idea
 - .venv/*
