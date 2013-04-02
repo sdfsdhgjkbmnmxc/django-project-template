@@ -9,3 +9,5 @@ libfreetype6
 libfreetype6-dev
 zlib1g-dev
 python-dev
+python-psycopg2
+libpq-dev
