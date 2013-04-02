@@ -1,3 +1,4 @@
+git-core
 rsync
 nginx
 python-virtualenv
