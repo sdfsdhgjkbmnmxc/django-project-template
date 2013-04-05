@@ -4,7 +4,6 @@
 \.pyc$
 \.settings$
 \..*project$
-\.sqlite$
 venv$
 var/*.sqlite
 README.md

@@ -40,4 +40,4 @@ chown root:root ${PROJECT_ROOT}/system/cron.conf
 echo "Create database"
 source ${PROJECT_ROOT}/venv.sh
 ${PROJECT_ROOT}/src/manage.py syncdb --noinput
-${PROJECT_ROOT}/src/manage.py migrate ${NAME}
+${PROJECT_ROOT}/src/manage.py migrate
