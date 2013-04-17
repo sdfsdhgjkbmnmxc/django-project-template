@@ -9,5 +9,5 @@ if [ ! -d ${ROOT}/src/${NAME}/migrations ]; then
 fi
 set +e; ${ROOT}/src/manage.py schemamigration ${NAME} --auto; set +e;
 ${ROOT}/src/manage.py migrate
-${ROOT}/src/manage.py syncdb
+${ROOT}/src/manage.py syncdb --delete-ghost-migrations
 exec ${ROOT}/src/manage.py runserver
