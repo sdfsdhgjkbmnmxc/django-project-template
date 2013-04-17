@@ -6,5 +6,6 @@
 *.sqlite
 .idea
 system/venv
+web/uploads/*
 var/*.sqlite
 README.md

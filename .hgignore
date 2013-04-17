@@ -6,4 +6,5 @@
 \..*project$
 venv$
 var/*.sqlite
+web/uploads
 README.md
