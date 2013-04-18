@@ -1,5 +1,4 @@
-#-e git+git://github.com/sdfsdhgjkbmnmxc/django-bootstrap.git#egg=djbootstrap
-django
+django==1.5
 flup
 flake8
 pil
