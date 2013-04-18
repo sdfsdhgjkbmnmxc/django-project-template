@@ -8,6 +8,6 @@ if [ ! -d ${ROOT}/src/${NAME}/migrations ]; then
     ${ROOT}/src/manage.py schemamigration ${NAME} --initial
 fi
 set +e; ${ROOT}/src/manage.py schemamigration ${NAME} --auto; set +e;
-${ROOT}/src/manage.py migrate
-${ROOT}/src/manage.py syncdb --delete-ghost-migrations
+${ROOT}/src/manage.py migrate --delete-ghost-migrations
+${ROOT}/src/manage.py syncdb
 exec ${ROOT}/src/manage.py runserver
