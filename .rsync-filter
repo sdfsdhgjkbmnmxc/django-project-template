@@ -11,4 +11,4 @@
 - dev
 - *.sqlite
 - .idea
-- .venv/*
+- system/venv
