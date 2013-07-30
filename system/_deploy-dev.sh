@@ -12,7 +12,7 @@ PROJECT_ROOT=/var/www/${NAME}
 USER=www-data
 GROUP=www-data
 
-DEB=`tr '\n' ' ' < ${ROOT}/debian.txt`
+DEB=`cat ${ROOT}/debian.txt | grep -v '#' | tr '\n' ' '`
 
 echo "[`date +%H:%M:%S`] prepare"
 ssh ${HOST} "\

@@ -3,11 +3,14 @@ rsync
 nginx
 python-virtualenv
 supervisor
+
+# for PIL
 libjpeg8
 libjpeg-dev
 libfreetype6
 libfreetype6-dev
 zlib1g-dev
+
 python-dev
 python-psycopg2
 libpq-dev
