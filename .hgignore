@@ -5,6 +5,6 @@
 \.settings$
 \..*project$
 venv$
-var/*.sqlite
+.*\.sqlite
 web/uploads
 README.md
