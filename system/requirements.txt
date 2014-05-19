@@ -1,5 +1,5 @@
 Django
+Pillow
 flup
 flake8
-PIL
 south
