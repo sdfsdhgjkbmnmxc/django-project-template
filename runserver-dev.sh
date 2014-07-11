@@ -10,4 +10,4 @@ fi
 set +e; ${ROOT}/src/manage.py schemamigration ${NAME} --auto; set +e;
 ${ROOT}/src/manage.py migrate --delete-ghost-migrations
 ${ROOT}/src/manage.py syncdb
-exec ${ROOT}/src/manage.py runserver
+exec ${ROOT}/src/manage.py runserver --traceback
