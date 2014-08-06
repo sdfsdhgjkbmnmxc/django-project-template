@@ -26,6 +26,7 @@ supervisorctl restart ${NAME}_fcgi
 
 echo "Nginx..."
 ln -sf ${PROJECT_ROOT}/system/nginx.conf /etc/nginx/sites-enabled/${NAME}
+rm -f /etc/nginx/sites-enabled/default
 /etc/init.d/nginx reload
 
 echo "Static files..."

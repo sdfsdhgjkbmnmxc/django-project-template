@@ -1,5 +1,5 @@
-#!/bin/sh
-set -e
+#!/bin/bash
+set -ex
 ROOT=`dirname "${BASH_SOURCE[0]}"`
 
 if [ -z "${HOST}" ]; then
