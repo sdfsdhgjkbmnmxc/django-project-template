@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ROOT=`dirname "${BASH_SOURCE[0]}"`
 
 export HOST=`cat ${ROOT}/system/host.conf`
