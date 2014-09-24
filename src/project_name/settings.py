@@ -116,7 +116,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     PROJ_NAME,
-    'south',
 )
 
 INTERNAL_IPS = (
@@ -152,3 +151,6 @@ LOGGING = {
         },
     }
 }
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
