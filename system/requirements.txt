@@ -2,5 +2,4 @@ Django
 Pillow
 flup
 flake8
-south
 #psycopg2
