@@ -1,6 +1,5 @@
-Django
+Django==1.7
 Pillow
 flup
 flake8
-south
 #psycopg2
