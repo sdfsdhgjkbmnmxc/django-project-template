@@ -14,12 +14,12 @@ Features:
  * etc
 
 Usage:
-
-    django-admin.py startproject --template=http://goo.gl/r6sAa -e sh,conf,sql -n base.html <MYAPPNAME>
-    cd <MYAPPNAME>
-    find . -name \*.sh -type f -exec chmod +x {} \; && chmod +x src/manage.py && rm README.md
-    # and now run your project:
-    ./runserver-dev.sh
-
+```shell
+django-admin.py startproject --template=http://goo.gl/r6sAa -e sh,conf,sql -n base.html <MYAPPNAME>
+cd <MYAPPNAME>
+find . -name \*.sh -type f -exec chmod +x {} \; && chmod +x src/manage.py && rm README.md
+# and now run your project:
+./runserver-dev.sh
+```
 Conventions:
  * suffix "-dev" = "for development only"
