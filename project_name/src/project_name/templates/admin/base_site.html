@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% load i18n admin_static %}
+
+{% block title %}{{ title }} | {% trans "Administration" %}{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <link rel="stylesheet" href="/static/admin-tuning.css" />
+    <script src="{% static "admin/js/jquery.min.js" %}"></script>
+    <script src="/static/admin-tuning.js"></script>
+{% endblock %}
+
+{% block branding %}
+    <h1 id="site-name">{% trans "Administration" %}</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

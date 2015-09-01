@@ -1,0 +1,5 @@
+Django==1.8
+Pillow
+flup
+flake8
+#psycopg2
