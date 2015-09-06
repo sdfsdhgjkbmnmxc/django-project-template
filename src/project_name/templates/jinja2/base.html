@@ -3,12 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% templatetag openblock %} block title {% templatetag closeblock %}{{ project_name }}{% templatetag openblock %} endblock {% templatetag closeblock %}</title>
-    <link href="{% templatetag openvariable %} static('bootstrap/dist/bootstrap.min.css') {% templatetag closevariable %}" rel="stylesheet" type="text/css">
-    <link href="{% templatetag openvariable %} static('bootstrap/dist/bootstrap-theme.min.css') {% templatetag closevariable %}" rel="stylesheet" type="text/css">
+    <link href="{% templatetag openvariable %} static('bootstrap/dist/css/bootstrap.min.css') {% templatetag closevariable %}" rel="stylesheet" type="text/css">
+    <link href="{% templatetag openvariable %} static('bootstrap/dist/css/bootstrap-theme.min.css') {% templatetag closevariable %}" rel="stylesheet" type="text/css">
     <link href="{% templatetag openvariable %} static('{{ project_name }}.css') {% templatetag closevariable %}" rel="stylesheet" type="text/css">
 </head>
 <body>
-It works!
+<h1>It works!</h1>
+<p>I am <code>templates/jinja2/base.html</code>.</p>
 <script type="text/javascript" src="{% templatetag openvariable %} static('jquery/dist/jquery.min.js') {% templatetag closevariable %}"></script>
 <script type="text/javascript" src="{% templatetag openvariable %} static('bootstrap/dist/js/bootstrap.min.js') {% templatetag closevariable %}"></script>
 <script type="text/javascript" src="{% templatetag openvariable %} static('{{ project_name }}.js') {% templatetag closevariable %}"></script>
