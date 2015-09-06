@@ -27,11 +27,7 @@ npm install -g bower
 
 Usage:
 ```shell
-django-admin.py startproject --template=http://goo.gl/r6sAa -e sh,conf,sql -n base.html <MYAPPNAME>
-cd <MYAPPNAME>
-find . -name \*.sh -type f -exec chmod +x {} \; && chmod +x src/manage.py && rm README.md
-# and now run your project:
-./runserver-dev.sh
+read -p "Enter app name: " appname && django-admin.py startproject --template=http://goo.gl/r6sAa -e sh,conf,sql -n base.html ${appname} && cd ${appname} && find . -name \*.sh -type f -exec chmod +x {} \; && chmod +x src/manage.py && rm README.md && ./runserver-dev.sh
 ```
 
 Conventions:

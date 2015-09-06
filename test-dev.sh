@@ -3,7 +3,7 @@ set -e
 ROOT=`dirname $0`
 NAME=`cat ${ROOT}/system/name.conf`
 
-source ${ROOT}/venv.sh
+. ${ROOT}/venv.sh
 
 echo "tests"
 export DJANGO_SETTINGS_MODULE=${NAME}.testsettings

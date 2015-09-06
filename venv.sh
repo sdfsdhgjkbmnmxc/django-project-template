@@ -7,11 +7,11 @@ if [ ! -f "${act}" ]; then
     set -e
     pip install virtualenv
     virtualenv ${ROOT}/system/venv
-    source ${act}
+    . ${act}
     ${ROOT}/upgrade-requirements.sh
     set +e
 else
-    source ${act}
+    . ${act}
 fi
 
 ARGS="$@"

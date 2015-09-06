@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 ROOT=`dirname $0`
-source ${ROOT}/venv.sh
+. ${ROOT}/venv.sh
 if [[ "`uname`" == "Darwin" ]]; then
     export CFLAGS=-Qunused-arguments
     export CPPFLAGS=-Qunused-arguments

@@ -137,7 +137,7 @@ INSTALLED_APPS = (
 )
 
 BOWER_INSTALLED_APPS = (
-    'jquery',
+    'bootstrap',
 )
 
 INTERNAL_IPS = (
