@@ -1,5 +1,5 @@
 #!/bin/bash
-ROOT=`dirname "${BASH_SOURCE[0]}"`
+ROOT=`dirname $0`
 act="${ROOT}/system/venv/bin/activate"
 mkdir -p ${ROOT}/system/venv
 

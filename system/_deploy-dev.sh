@@ -1,6 +1,6 @@
 #!/bin/bash
 set -ex
-ROOT=`dirname "${BASH_SOURCE[0]}"`
+ROOT=`dirname $0`
 
 if [ -z "${HOST}" ]; then
     echo "HOST variable required"

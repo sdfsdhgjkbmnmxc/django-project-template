@@ -1,5 +1,5 @@
 #!/bin/bash
-ROOT=`dirname "${BASH_SOURCE[0]}"`
+ROOT=`dirname $0`
 
 export HOST=`cat ${ROOT}/system/host.conf`
 #sed -i 's/YOUR\.DOMAIN/${HOST}/g' ${ROOT}/system/*

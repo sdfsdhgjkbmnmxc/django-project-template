@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-ROOT=`dirname "${BASH_SOURCE[0]}"`
+ROOT=`dirname $0`
 source ${ROOT}/venv.sh
 if [[ "`uname`" == "Darwin" ]]; then
     export CFLAGS=-Qunused-arguments
