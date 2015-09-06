@@ -6,4 +6,5 @@ if [[ "`uname`" == "Darwin" ]]; then
     export CFLAGS=-Qunused-arguments
     export CPPFLAGS=-Qunused-arguments
 fi
-exec pip install -r ${ROOT}/system/requirements.txt --upgrade
+pip install -r ${ROOT}/system/requirements.txt --upgrade
+${ROOT}/src/manage-venv.sh bower install

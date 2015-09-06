@@ -17,6 +17,7 @@ DEB=`cat ${ROOT}/debian.txt | grep -v '#' | tr '\n' ' '`
 echo "[`date +%H:%M:%S`] prepare"
 ssh ${HOST} "\
     sudo apt-get install -y ${DEB} &&\
+    sudo npm install bower -g &&\
     sudo mkdir -p \
         ${PROJECT_ROOT}/system/venv \
         &&\

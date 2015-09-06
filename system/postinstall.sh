@@ -30,6 +30,7 @@ rm -f /etc/nginx/sites-enabled/default
 /etc/init.d/nginx reload
 
 echo "Static files..."
+${PROJECT_ROOT}/venv.sh src/manage.py bower install
 ${PROJECT_ROOT}/venv.sh src/manage.py collectstatic --link --noinput
 chgrp -R www-data ${PROJECT_ROOT}/web/
 chmod -R 0775 ${PROJECT_ROOT}/web/

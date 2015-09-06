@@ -67,16 +67,44 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'djangobower.finders.BowerFinder',
 )
+
+BOWER_COMPONENTS_ROOT = os.path.join(root, '..', '..')
 
 SECRET_KEY = '{{ secret_key }}'
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-    # 'django.template.loaders.eggs.Loader',
-)
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [
+        os.path.join(root, 'templates'),
+    ],
+    'OPTIONS': {
+        'loaders': (
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+            # 'django.template.loaders.eggs.Loader',
+        ),
+        'context_processors': (
+            'django.contrib.auth.context_processors.auth',
+            'django.core.context_processors.debug',
+            'django.core.context_processors.i18n',
+            'django.core.context_processors.media',
+            'django.core.context_processors.static',
+            'django.core.context_processors.tz',
+            'django.core.context_processors.request',
+            'django.contrib.messages.context_processors.messages',
+        ),
+    }
+}, {
+    'BACKEND': PROJ_NAME + '.j2.Jinja2Backend',
+    'DIRS': [
+        os.path.join(root, 'templates', 'jinja2'),
+    ],
+    'OPTIONS': {
+        'extensions': [],
+    },
+}]
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -96,17 +124,6 @@ TEMPLATE_DIRS = (
     os.path.join(root, 'templates'),
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.core.context_processors.request',
-    'django.contrib.messages.context_processors.messages',
-)
-
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -115,7 +132,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'djangobower',
     PROJ_NAME,
+)
+
+BOWER_INSTALLED_APPS = (
+    'jquery',
 )
 
 INTERNAL_IPS = (

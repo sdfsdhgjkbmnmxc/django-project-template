@@ -3,7 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% templatetag openblock %} block title {% templatetag closeblock %}Title{% templatetag openblock %} endblock {% templatetag closeblock %}</title>
-    <script type="text/javascript" src="{% templatetag openvariable %} STATIC_URL {% templatetag closevariable %}{{ project_name }}.js"></script>
+    <script type="text/javascript" src="{% templatetag openvariable %} static('dist/jquery.min.js') {% templatetag closevariable %}"></script>
+    <script type="text/javascript" src="{% templatetag openvariable %} static('{{ project_name }}.js') {% templatetag closevariable %}"></script>
     <link href="{% templatetag openvariable %} STATIC_URL {% templatetag closevariable %}{{ project_name }}.css" rel="stylesheet" type="text/css">
 </head>
 <body>

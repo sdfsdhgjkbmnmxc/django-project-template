@@ -1,4 +1,6 @@
+jinja2
 Django==1.8
+django-bower
 Pillow
 flup
 flake8
