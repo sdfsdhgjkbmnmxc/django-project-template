@@ -1,9 +1,8 @@
 #!/bin/bash
 set -e
-ROOT=`dirname $0`
-NAME=`cat ${ROOT}/system/name.conf`
+cd `dirname $0`
+NAME=`cat system/name.conf`
 export DJANGO_SETTINGS_MODULE=${NAME}.localsettings
-. ${ROOT}/venv.sh
-${ROOT}/src/manage.py makemigrations ${NAME}
-${ROOT}/src/manage.py migrate
-exec ${ROOT}/src/manage.py runserver --traceback
+src/manage-venv.sh makemigrations ${NAME}
+src/manage-venv.sh migrate
+src/manage-venv.sh runserver --traceback

@@ -1,6 +1,4 @@
 #!/bin/bash
-ROOT=`dirname $0`
-
-export HOST=`cat ${ROOT}/system/host.conf`
-#sed -i 's/YOUR\.DOMAIN/${HOST}/g' ${ROOT}/system/*
-${ROOT}/system/_deploy-dev.sh
+cd `dirname $0`
+export HOST=`cat system/host.conf`
+exec system/_deploy-dev.sh

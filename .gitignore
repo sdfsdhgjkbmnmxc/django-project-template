@@ -1,11 +1,10 @@
 *~
 *#
 *.pyc
-.settings
-*project
 *.sqlite
 .idea
-system/venv
+.project
+.settings
+.venv
 web/uploads/*
 var/*.sqlite
-README.md

@@ -1,6 +1,3 @@
 #!/bin/bash
-set -e
-ROOT=`dirname $0`
-
-source ${ROOT}/../system/venv/bin/activate
-exec ${ROOT}/manage.py $@
+cd `dirname $0`
+exec ../.venv/bin/python3 ./manage.py $@

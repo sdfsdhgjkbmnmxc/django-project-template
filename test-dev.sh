@@ -1,13 +1,10 @@
 #!/bin/bash
 set -e
-ROOT=`dirname $0`
-NAME=`cat ${ROOT}/system/name.conf`
-
-. ${ROOT}/venv.sh
+cd `dirname $0`
 
 echo "tests"
-export DJANGO_SETTINGS_MODULE=${NAME}.testsettings
-${ROOT}/src/manage.py test $@
+DJANGO_SETTINGS_MODULE=`cat system/name.conf`.testsettings \
+    .venv/bin/python3 src/manage.py test $@
 
 echo "code checks"
-flake8 ${ROOT}/src --show-source
+.venv/bin/flake8 src --show-source

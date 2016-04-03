@@ -10,7 +10,6 @@ GROUP=www-data
 HOST=$1
 
 echo "Virtualenv..."
-${ROOT}/../venv.sh
 ${ROOT}/../upgrade-requirements.sh
 
 echo "Logs..."
@@ -30,8 +29,8 @@ rm -f /etc/nginx/sites-enabled/default
 /etc/init.d/nginx reload
 
 echo "Static files..."
-${PROJECT_ROOT}/venv.sh src/manage.py bower install
-${PROJECT_ROOT}/venv.sh src/manage.py collectstatic --link --noinput
+${PROJECT_ROOT}/venv.sh src/manage-venv.sh bower install
+${PROJECT_ROOT}/venv.sh src/manage-venv.sh collectstatic --link --noinput
 chgrp -R www-data ${PROJECT_ROOT}/web/
 chmod -R 0775 ${PROJECT_ROOT}/web/
 
@@ -40,5 +39,4 @@ ln -sf ${PROJECT_ROOT}/system/cron.conf /etc/cron.d/${NAME}
 chown root:root ${PROJECT_ROOT}/system/cron.conf
 
 echo "Create database"
-source ${PROJECT_ROOT}/venv.sh
-${PROJECT_ROOT}/src/manage.py migrate --noinput
+${PROJECT_ROOT}/src/manage-venv.sh migrate --noinput
