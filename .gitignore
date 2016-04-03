@@ -6,5 +6,6 @@
 .project
 .settings
 .venv
+__pycache__
 web/uploads/*
 var/*.sqlite
