@@ -3,10 +3,10 @@ from django.db import models
 
 
 # class MyModel(models.Model):
-#     def __unicode__(self):
-#         return u''
+#     def __str__(self):
+#         return ''
 #
 #     class Meta:
-#         verbose_name = u''
-#         verbose_name_plural = u''
+#         verbose_name = ''
+#         verbose_name_plural = ''
 #         ordering = ('-id',)

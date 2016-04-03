@@ -1,8 +1,10 @@
-jinja2
 Django==1.9.4
+Jinja2==2.8
+pip>=8.1.0
 pep8==1.7.0
 django-bower
 Pillow
-flup
+ipython
+flipflop
 flake8
 #psycopg2
