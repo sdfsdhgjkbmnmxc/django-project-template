@@ -14,7 +14,6 @@ else:
     LOG_DIR = tempfile.gettempdir()
 
 DEBUG = False
-TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
 
@@ -119,10 +118,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = PROJ_NAME + '.urls'
 
 WSGI_APPLICATION = PROJ_NAME + '.wsgi.application'
-
-TEMPLATE_DIRS = (
-    os.path.join(root, 'templates'),
-)
 
 INSTALLED_APPS = (
     'django.contrib.auth',

@@ -1,9 +1,8 @@
-from settings import *  # @UnusedWildImport  # NOQA
+from .settings import *  # @UnusedWildImport  # NOQA
 
 
 ADMINS = ()
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 ROOT_URLCONF = '{{ project_name }}.localurls'
 
 DATABASES = {
